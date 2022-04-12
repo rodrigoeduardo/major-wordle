@@ -1,6 +1,7 @@
-import { Flex, Text } from "@chakra-ui/react";
-import type { NextPage } from "next";
-import { GuessInput } from "../components/GuessInput";
+import { Flex, Text } from '@chakra-ui/react';
+import type { NextPage } from 'next';
+import { GuessesBox } from '../components/GuessesBox';
+import { GuessInput } from '../components/GuessInput';
 
 const Home: NextPage = () => {
   return (
@@ -18,6 +19,8 @@ const Home: NextPage = () => {
       </Text>
 
       <GuessInput />
+
+      <GuessesBox />
     </Flex>
   );
 };
