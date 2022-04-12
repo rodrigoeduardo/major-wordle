@@ -1,13 +1,16 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import type { AppProps } from "next/app";
+import { ChakraProvider } from '@chakra-ui/react';
+import type { AppProps } from 'next/app';
+import { GameContextProvider } from '../contexts/GameContext';
 
-import { theme } from "../theme";
+import { theme } from '../theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <GameContextProvider>
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </GameContextProvider>
   );
 }
 
