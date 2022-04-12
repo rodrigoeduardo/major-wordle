@@ -1,9 +1,9 @@
 export type Player = {
-    id: number;
-    name: String;
-    link: String;
-    nationality: String;
-    photoURL: String;
-    role: String;
-    totalWinnings: String;
-  };
+  id: number;
+  name: string;
+  link: string;
+  nationality: string;
+  photoURL: string;
+  role: string;
+  totalWinnings: string;
+};
