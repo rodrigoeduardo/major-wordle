@@ -1,7 +1,7 @@
-import { Flex, Text } from '@chakra-ui/react';
-import type { NextPage } from 'next';
-import { GuessesBox } from '../components/GuessesBox';
-import { GuessInput } from '../components/GuessInput';
+import { Flex, Image, Text } from "@chakra-ui/react";
+import type { NextPage } from "next";
+import { GuessesBox } from "../components/GuessesBox";
+import { GuessInput } from "../components/GuessInput";
 
 const Home: NextPage = () => {
   return (
@@ -17,6 +17,8 @@ const Home: NextPage = () => {
       <Text fontSize={48} fontWeight="bold" color="purple.500">
         cs:go wordle
       </Text>
+
+      {/* <Image alt="player photo" src={correctPlayer.photoURL} /> */}
 
       <GuessInput />
 
