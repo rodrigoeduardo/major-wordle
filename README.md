@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <h1>🔫 Who is? CS:GO Major Players</h1>
+</div>
 
-## Getting Started
+<br />
 
-First, run the development server:
+'Who is?' is a daily CS:GO wordle game. 
 
-```bash
-npm run dev
-# or
+## 🚀 Built With
+
+- [Nextjs](https://nextjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Chakra UI](https://chakra-ui.com/)
+- [React Hook Form](https://react-hook-form.com/)
+
+## 🎮 Deployment
+
+The game is deployed on: https://whoismajor.vercel.app
+
+## 🛠 How to run
+
+### Clone the project
+
+**To run the application locally**, first you'll need to clone the repository:
+
+```sh
+git clone
+```
+
+and then:
+
+```sh
+cd major-wordle
+```
+
+Now, you have to install project dependencies:
+
+```sh
+yarn
+```
+
+and then, you can run it:
+
+```sh
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 👨‍💻 Author
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+<div align="center">
+  <img src="https://github.com/rodrigoeduardo.png" width="100" height="100" />
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+  <br />
+  <b>Rodrigo Eduardo</b>
+  <br />
+  <br />
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  <a href="mailto:rodrigoeduardodb1@gmail.com">
+    <img alt="GitHub last commit" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+  </a>
+  <a href="https://www.linkedin.com/in/rodrigoedb">
+    <img alt="Perfil Linkedin" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+</div>
