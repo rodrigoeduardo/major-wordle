@@ -1,10 +1,10 @@
-import { Text } from "@chakra-ui/react";
-import { useContext } from "react";
-import { GameContext } from "../../contexts/GameContext";
+import { Flex, Text } from '@chakra-ui/react';
+import { useContext } from 'react';
+import { GameContext } from '../../contexts/GameContext';
 
 interface InfoBoxProps {
   info: string;
-  type: "nationality" | "role" | "winnings";
+  type: 'nationality' | 'role' | 'winnings';
 }
 
 export function InfoBox({ info, type }: InfoBoxProps) {
@@ -13,48 +13,51 @@ export function InfoBox({ info, type }: InfoBoxProps) {
   } = useContext(GameContext);
 
   const formattedTotalWinnings = parseFloat(
-    totalWinnings.substring(1).replace(/,/g, "")
+    totalWinnings.substring(1).replace(/,/g, '')
   );
 
   const resultEmoji = () => {
-    if (type === "nationality") {
+    if (type === 'nationality') {
       if (nationality === info) {
-        return "✅";
+        return '✅';
       } else {
-        return "❌";
+        return '❌';
       }
-    } else if (type === "role") {
+    } else if (type === 'role') {
       if (role === info) {
-        return "✅";
+        return '✅';
       } else {
-        return "❌";
+        return '❌';
       }
-    } else if (type === "winnings") {
-      const formattedInfo = parseFloat(info.substring(1).replace(/,/g, ""));
+    } else if (type === 'winnings') {
+      const formattedInfo = parseFloat(info.substring(1).replace(/,/g, ''));
 
       if (formattedTotalWinnings === formattedInfo) {
-        return "✅";
+        return '✅';
       } else if (formattedTotalWinnings > formattedInfo) {
-        return "🔺";
+        return '🔺';
       } else if (formattedTotalWinnings < formattedInfo) {
-        return "🔻";
+        return '🔻';
       }
     }
   };
 
   const typeTitle = () => {
     switch (type) {
-      case "nationality":
-        return "🏴 Nationality:";
-      case "role":
-        return "🏹 Primary role:";
-      case "winnings":
-        return "💰 Total winnings:";
+      case 'nationality':
+        return '🏴 Nationality:';
+      case 'role':
+        return '🏹 Primary role:';
+      case 'winnings':
+        return '💰 Total winnings:';
     }
   };
   return (
-    <Text color="purple.50">
-      <Text fontWeight="bold">{typeTitle()}</Text> {info} {resultEmoji()}
-    </Text>
+    <Flex direction="column" color="gray.50">
+      <Text fontWeight="bold">{typeTitle()}</Text>
+      <Text color="gray.300">
+        {info} {resultEmoji()}
+      </Text>
+    </Flex>
   );
 }
