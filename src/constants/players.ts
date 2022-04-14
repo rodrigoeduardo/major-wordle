@@ -1127,8 +1127,8 @@ export const players: Player[] = [
     nationality: 'Poland',
     photoURL:
       'https://liquipedia.net/commons/images/thumb/0/04/MOUZ_2021_allmode_full.png/600px-MOUZ_2021_allmode_full.png',
-    role: '',
-    totalWinnings: '$3,814,587.3',
+    role: 'Rifler',
+    totalWinnings: '$203,945',
   },
   {
     id: 113,
