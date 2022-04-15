@@ -3,51 +3,37 @@ import {
   Flex,
   Image,
   Link,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   Text,
   useDisclosure,
-  useToast,
 } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import { useContext, useEffect } from 'react';
 import { GuessesBox } from '../components/GuessesBox';
 import { GuessInput } from '../components/GuessInput';
+import { TutorialModal } from '../components/Modals/TutorialModal';
+import { VictoryModal } from '../components/Modals/VictoryModal';
 import { GameContext } from '../contexts/GameContext';
 
 const Home: NextPage = () => {
-  const { hasWon, correctPlayer, guesses } = useContext(GameContext);
+  const { hasWon } = useContext(GameContext);
 
-  const { isOpen, onOpen: openModal, onClose } = useDisclosure();
-  const toast = useToast();
+  const {
+    isOpen: isOpenVictory,
+    onOpen: openVictoryModal,
+    onClose: closeVictoryModal,
+  } = useDisclosure();
+
+  const {
+    isOpen: isOpenTutorial,
+    onOpen: openTutorialModal,
+    onClose: closeTutorialModal,
+  } = useDisclosure();
 
   useEffect(() => {
     if (hasWon) {
-      openModal();
+      openVictoryModal();
     }
   }, [hasWon]);
-
-  const handleShare = () => {
-    const shareText = `I've just guessed the major player's name after ${
-      guesses.length
-    } ${
-      guesses.length > 1 ? 'tries' : 'try'
-    }!\n\nhttps://whoismajor.vercel.app/`;
-
-    navigator.clipboard.writeText(shareText);
-
-    toast({
-      title: 'Copied to clipboard.',
-      status: 'success',
-      duration: 3000,
-      isClosable: false,
-      position: 'top',
-    });
-  };
 
   return (
     <>
@@ -82,6 +68,21 @@ const Home: NextPage = () => {
           </Text>
         </Flex>
 
+        <Image
+          src="assets/info.svg"
+          alt="How to play"
+          boxSize="30px"
+          position="fixed"
+          cursor="pointer"
+          top="5"
+          right="5"
+          onClick={openTutorialModal}
+          transition="all 0.3s"
+          _hover={{
+            transform: 'scale(1.1)',
+          }}
+        />
+
         {/* <Image alt="player photo" src={correctPlayer.photoURL} /> */}
 
         {hasWon ? (
@@ -90,7 +91,7 @@ const Home: NextPage = () => {
             color="green.400"
             fontWeight="bold"
             fontSize={24}
-            onClick={openModal}
+            onClick={openVictoryModal}
             _hover={{ textDecoration: 'underline', cursor: 'pointer' }}
           >
             You won!
@@ -113,36 +114,8 @@ const Home: NextPage = () => {
         </Link>
       </Flex>
 
-      {/* winner winner chicken dinner (modal) */}
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent mt={20}>
-          <ModalHeader textAlign="center">You won!</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Text textAlign="center">
-              The player is: <strong>{correctPlayer.name}</strong>
-            </Text>
-            <Text textAlign="center">
-              You guessed right after{' '}
-              <strong>
-                {guesses.length} {guesses.length > 1 ? 'tries' : 'try'}!
-              </strong>
-            </Text>
-          </ModalBody>
-
-          <Button
-            alignSelf="center"
-            width="50%"
-            padding={6}
-            my={3}
-            colorScheme="blue"
-            onClick={handleShare}
-          >
-            Share
-          </Button>
-        </ModalContent>
-      </Modal>
+      <VictoryModal isOpen={isOpenVictory} onClose={closeVictoryModal} />
+      <TutorialModal isOpen={isOpenTutorial} onClose={closeTutorialModal} />
     </>
   );
 };
