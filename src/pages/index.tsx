@@ -5,22 +5,29 @@ import {
   Link,
   Text,
   useDisclosure,
-} from '@chakra-ui/react';
-import type { NextPage } from 'next';
-import { useContext, useEffect } from 'react';
-import { GuessesBox } from '../components/GuessesBox';
-import { GuessInput } from '../components/GuessInput';
-import { TutorialModal } from '../components/Modals/TutorialModal';
-import { VictoryModal } from '../components/Modals/VictoryModal';
-import { GameContext } from '../contexts/GameContext';
+} from "@chakra-ui/react";
+import type { NextPage } from "next";
+import { useContext, useEffect } from "react";
+import { GuessesBox } from "../components/GuessesBox";
+import { GuessInput } from "../components/GuessInput";
+import { DefeatModal } from "../components/Modals/DefeatModal";
+import { TutorialModal } from "../components/Modals/TutorialModal";
+import { VictoryModal } from "../components/Modals/VictoryModal";
+import { GameContext } from "../contexts/GameContext";
 
 const Home: NextPage = () => {
-  const { hasWon } = useContext(GameContext);
+  const { hasWon, hasLost } = useContext(GameContext);
 
   const {
     isOpen: isOpenVictory,
     onOpen: openVictoryModal,
     onClose: closeVictoryModal,
+  } = useDisclosure();
+
+  const {
+    isOpen: isOpenDefeat,
+    onOpen: openDefeatModal,
+    onClose: closeDefeatModal,
   } = useDisclosure();
 
   const {
@@ -79,22 +86,22 @@ const Home: NextPage = () => {
           onClick={openTutorialModal}
           transition="all 0.3s"
           _hover={{
-            transform: 'scale(1.1)',
+            transform: "scale(1.1)",
           }}
         />
 
         {/* <Image alt="player photo" src={correctPlayer.photoURL} /> */}
 
-        {hasWon ? (
+        {hasWon || hasLost ? (
           <Text
             my={10}
-            color="green.400"
+            color={hasWon ? "green.500" : "red.500"}
             fontWeight="bold"
             fontSize={24}
-            onClick={openVictoryModal}
-            _hover={{ textDecoration: 'underline', cursor: 'pointer' }}
+            onClick={hasWon ? openVictoryModal : openDefeatModal}
+            _hover={{ textDecoration: "underline", cursor: "pointer" }}
           >
-            You won!
+            {hasWon ? "You won!" : "You lost!"}
           </Text>
         ) : (
           <GuessInput />
@@ -115,6 +122,7 @@ const Home: NextPage = () => {
       </Flex>
 
       <VictoryModal isOpen={isOpenVictory} onClose={closeVictoryModal} />
+      <DefeatModal isOpen={isOpenDefeat} onClose={closeDefeatModal} />
       <TutorialModal isOpen={isOpenTutorial} onClose={closeTutorialModal} />
     </>
   );
